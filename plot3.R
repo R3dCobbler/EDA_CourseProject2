@@ -10,6 +10,8 @@ SCC <- readRDS("Source_Classification_Code.rds")
 # Question 3. Which of the four source types (point, nonpoint, onroad, nonroad) have seen decreases in emissions from 1999 - 2008?
 # Which have seen increases over the same period?
 
+baltimore <- subset(NEI, fips == "24510")
+
 # Use ggplot2 plotting system to answer this question
 
 library(ggplot2)
