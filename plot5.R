@@ -23,10 +23,14 @@ vehicle.sources <- SCC[vehicles, ] # assuming all motor vehicles i.e. both highw
 
 vehicle.emissions <- merge(vehicle.sources, NEI, by.x = "SCC")
 
+# Identify only results from Baltimore City
+
+baltimore <- subset(vehicle.emissions, fips == "24510")
+
 # Create plot
 
 png("plot5.png")
-ggplot(vehicle.emissions, aes(x = factor(year), y = Emissions/1000, fill = SCC.Level.Two)) +
+ggplot(baltimore, aes(x = factor(year), y = Emissions, fill = SCC.Level.Two)) +
   ggtitle("pm25 Emissions from Motor Vehicles in Baltimore City: 1999 - 2008") +
   geom_bar(stat = "identity") + xlab("Year") + ylab("Total pm25 emissions")
 dev.off()
